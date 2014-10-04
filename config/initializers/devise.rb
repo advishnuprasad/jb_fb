@@ -258,7 +258,12 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 end
 
-
-Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET'], scope: "email,user_likes"
+if Rails.env.producion?
+  Rails.application.config.middleware.use OmniAuth::Builder do
+    provider :facebook, ENV['FB_APP_ID_TEST'], ENV['FB_SECRET_TEST'], scope: "email,user_likes"
+  end
+else
+  Rails.application.config.middleware.use OmniAuth::Builder do
+    provider :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET'], scope: "email,user_likes"
+  end
 end
