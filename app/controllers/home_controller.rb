@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  skip_before_filter :verify_authenticity_token :only => [:welcome]
   def welcome
     # You need to implement the method below in your model (e.g. app/models/user.rb)
     Rails.logger.info request.env['facebook.params']
