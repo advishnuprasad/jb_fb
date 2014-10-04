@@ -5,8 +5,6 @@ ruby "2.1.2"
 gem 'rails', '4.1.4'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', group: :development
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -46,4 +44,8 @@ gem 'devise'
 gem  'pg'
 gem 'heroku'
 gem 'rails_12factor', group: :production
+
+gem "therubyracer"
+gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem "twitter-bootstrap-rails"
 
