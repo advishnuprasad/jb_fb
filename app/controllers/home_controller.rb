@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def welcome
     # You need to implement the method below in your model (e.g. app/models/user.rb)
-    p request.env['facebook.params']
+    Rails.logger.info request.env['facebook.params']
     if request.env["facebook.params"].present?
       @user = User.from_omniauth(request.env["facebook.params"])
 
