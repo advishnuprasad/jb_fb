@@ -3,9 +3,12 @@ class HomeController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:welcome]
   def welcome
     # You need to implement the method below in your model (e.g. app/models/user.rb)
+    p request.env['facebook.params']
     Rails.logger.info request.env['facebook.params']
-    @login_info = ::Facebook::Request.parse_signed_request(params[:signed_request], ENV['FB_SECRET_TEST'])
-    Rails.logger.info @login_info
+    if request.env['facebook.params']
+      @login_info = ::Facebook::Request.parse_signed_request(params[:signed_request], ENV['FB_SECRET_TEST'])
+      Rails.logger.info @login_info
+    end
     # if request.env["facebook.params"].present?
     #   @user = User.from_omniauth(request.env["facebook.params"])
 
